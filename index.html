@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMLEcho</title>
+    <style>
+        body {
+            font-family: 'Poppins';
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+        }
+
+        span {
+            color: red;
+        }
+
+        button {
+            background: lime;
+            margin: 1rem 0;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+            font-size: 1.4rem;
+        }
+
+        .html-output {
+            background: #F6F6F6;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTMLEcho</h1>
+
+    <p>Generate random HTML markup with text sourced from various books in the project Gutenberg library.</p>
+
+    <h2>Here are five random paragraphs with text sourced from Dracula.</h2>
+
+    <div id="output-a" class="html-output"></div>
+
+    <button onclick="generateOutputA()">Generate Again</button>
+
+    <h2>Here are five ordered list items with text sourced from Absurd Sentences.</h2>
+
+    <div id="output-b" class="html-output"></div>
+
+    <button onclick="generateOutputB()">Generate Again</button>
+
+    <h2>Here is some random HTML text sourced from Alice in Wonderland.</h2>
+
+    <div id="output-c" class="html-output"></div>
+
+    <button onclick="generateOutputC()">Generate Again</button>
+
+    <h2>Finally, some HTML text based on Lorem Ipsum if that's what you want.</h2>
+
+    <div id="output-d" class="html-output"></div>
+
+    <button onclick="generateOutputD()">Generate Again</button>
+
+    <script src="HTMLEcho.js"></script>
+
+    <script>
+
+        const DraculaEcho = new HTMLEcho("files/dracula.txt");
+        const AbsurdEcho = new HTMLEcho("files/absurd.txt");
+        const AliceEcho = new HTMLEcho("files/alice-in-wonderland.txt");
+        const LoremEcho = new HTMLEcho("files/lorem-ipsum.txt");
+
+
+        function generateOutputA() {
+            DraculaEcho.generateHTML('p-5').then(html => {
+                document.getElementById("output-a").innerHTML = html;
+            });
+        }
+
+        function generateOutputB() {
+            AbsurdEcho.generateHTML('ol-5').then(html => {
+                document.getElementById("output-b").innerHTML = html;
+            });
+        }
+
+        function generateOutputC() {
+            AliceEcho.generateHTML('h2-1,p-2,h3-1,p-1,h3-1,p-1,ol-3').then(html => {
+                document.getElementById("output-c").innerHTML = html;
+            });
+        }
+
+        function generateOutputD() {
+            LoremEcho.generateHTML('h2-1,p-1,ul-3,p-1,h3-1,p-1,ol-3').then(html => {
+                document.getElementById("output-d").innerHTML = html;
+            });
+        }
+
+        generateOutputA();
+        generateOutputB();
+        generateOutputC();
+        generateOutputD();
+    </script>
+</body>
+</html>
